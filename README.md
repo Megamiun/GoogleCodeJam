@@ -10,8 +10,12 @@ Sometimes it will be a mess because:
 
 * It is my first time trying to really use Kotlin to solve a problem;
 * As I am greatly used to Java and it procedural style, it was too my first try to really do something more functionally, and as sometimes when we use tools that we don't completely understand, the result can be sub-optimal;
-* Sometimes I was not on my best state of mind(and awakeness, sincerely) and on the pressure of solving those problems in two and a half hours, sometimes I did some things that I would not be really comfortable to do usually.
+* Sometimes I was not on my best state of mind(and awakeness, sincerely) and on the pressure of solving those problems in two and a half hours, sometimes I did some things that I would not be really comfortable to do usually;
 * I have much left to learn. Simple as that.
+
+## Why am I doing this?
+
+I am to be a developer as good and as open source as I can be. One of the first steps is to show my code to the world. As a friend of mine(Hello, Mauricio) says, I am a little too afraid of sharing my code with people, as I never think it is good enough, and so I never really interact with anyone. Think of this as a first step to train myself to be a better developer, as small as it is.
 
 ## Structure?
 
