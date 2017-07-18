@@ -8,8 +8,7 @@ TODO
 
 TODO
 
-### [Playing the Dragon](c/index.md)
-
+### [Playing the Dragon](c/README.md)
 
 The first challenge that I revisited after the end of the code jam, possibly not the best possible choices as to do this problem efficiently is harder than it seems. 
 
