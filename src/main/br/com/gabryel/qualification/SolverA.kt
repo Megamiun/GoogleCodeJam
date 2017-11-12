@@ -1,4 +1,4 @@
-package qualification
+package br.com.gabryel.qualification
 
 import java.util.*
 
@@ -27,7 +27,7 @@ class SolverA {
             }
         }
 
-        // Verifier().checkPossibility(round1B.State(pancakes), flipperSize)
+        // Verifier().checkPossibility(br.com.gabryel.round1B.State(pancakes), flipperSize)
 
         return if (pancakes.all { it }) flips.toString() else "IMPOSSIBLE"
     }
@@ -35,9 +35,9 @@ class SolverA {
 
 
 //class Verifier {
-//    fun checkPossibility(state: round1B.State, flipperSize: Int) {
-//        val explored = mutableSetOf<round1B.State>()
-//        val toBeExplored: Queue<round1B.State> =  LinkedList()
+//    fun checkPossibility(state: br.com.gabryel.round1B.State, flipperSize: Int) {
+//        val explored = mutableSetOf<br.com.gabryel.round1B.State>()
+//        val toBeExplored: Queue<br.com.gabryel.round1B.State> =  LinkedList()
 //        toBeExplored.add(state)
 //
 //        while (!toBeExplored.isEmpty()) {
@@ -59,21 +59,21 @@ class SolverA {
 //        println("It should be impossible")
 //    }
 //
-//    class round1B.State(pancakeState: Array<Boolean>) {
+//    class br.com.gabryel.round1B.State(pancakeState: Array<Boolean>) {
 //
 //        val state = pancakeState.copyOf()
 //
 //        val valid = state.all { it }
 //
-//        fun generateStates(flipperSize: Int): Set<round1B.State>{
-//            val newStates = mutableSetOf<round1B.State>()
+//        fun generateStates(flipperSize: Int): Set<br.com.gabryel.round1B.State>{
+//            val newStates = mutableSetOf<br.com.gabryel.round1B.State>()
 //            for (index in 0 .. state.size - flipperSize) {
 //                val newState = state.copyOf()
 //                for (marker in index .. index + flipperSize - 1) {
 //                    newState[marker] = !state[marker]
 //                }
 //
-//                newStates.add(round1B.State(newState))
+//                newStates.add(br.com.gabryel.round1B.State(newState))
 //            }
 //
 //            return newStates
@@ -83,7 +83,7 @@ class SolverA {
 //            if (this === other) return true
 //            if (other?.javaClass != javaClass) return false
 //
-//            other as round1B.State
+//            other as br.com.gabryel.round1B.State
 //
 //            if (!Arrays.equals(state, other.state)) return false
 //

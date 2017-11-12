@@ -1,4 +1,4 @@
-package qualification
+package br.com.gabryel.qualification
 
 import java.util.*
 

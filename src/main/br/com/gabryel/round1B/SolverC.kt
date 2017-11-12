@@ -1,14 +1,6 @@
-package round1B
+package br.com.gabryel.round1B
 
-/**
- * Created by gabryel on 22/04/17.
- */
 import java.util.*
-import kotlin.collections.HashMap
-
-/**
- * Created by gabryel on 22/04/17.
- */
 
 /**
  * Created by gabryel on 07/04/17.

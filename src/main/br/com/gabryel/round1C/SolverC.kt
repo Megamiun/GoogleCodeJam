@@ -1,8 +1,5 @@
-package round1C
+package br.com.gabryel.round1C
 
-/**
- * Created by gabryel on 30/04/17.
- */
 import java.util.*
 
 /**

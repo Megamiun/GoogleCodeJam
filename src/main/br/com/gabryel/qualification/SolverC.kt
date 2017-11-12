@@ -1,7 +1,6 @@
-package qualification
+package br.com.gabryel.qualification
 
 import java.util.*
-import java.util.Comparator
 
 /**
  * Created by gabryel on 07/04/17.

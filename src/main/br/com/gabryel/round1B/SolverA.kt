@@ -1,10 +1,6 @@
-package round1B
+package br.com.gabryel.round1B
 
 import java.util.*
-
-/**
- * Created by gabryel on 22/04/17.
- */
 
 /**
  * Created by gabryel on 07/04/17.

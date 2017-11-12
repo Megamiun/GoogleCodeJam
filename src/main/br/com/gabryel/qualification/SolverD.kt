@@ -1,10 +1,6 @@
-package round1C
+package br.com.gabryel.qualification
 
 import java.util.*
-
-/**
- * Created by gabryel on 30/04/17.
- */
 
 /**
  * Created by gabryel on 07/04/17.
@@ -13,12 +9,12 @@ fun main(args: Array<String>) {
     val sc = Scanner(System.`in`)
 
     for (case in 1 .. sc.nextInt()) {
-        println("Case #$case: ${SolverB().solve(sc)}")
+        println("Case #$case: ${SolverD().solve(sc.nextInt(), sc.nextInt())}")
     }
 }
 
-class SolverB {
-    fun solve(sc: Scanner): String {
+class SolverD {
+    fun solve(userStalls: Int, numberPeople: Int): String {
         return ""
     }
 }

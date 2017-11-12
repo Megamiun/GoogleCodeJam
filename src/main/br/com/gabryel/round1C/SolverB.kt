@@ -1,4 +1,4 @@
-package qualification
+package br.com.gabryel.round1C
 
 import java.util.*
 
@@ -9,12 +9,12 @@ fun main(args: Array<String>) {
     val sc = Scanner(System.`in`)
 
     for (case in 1 .. sc.nextInt()) {
-        println("Case #$case: ${SolverD().solve(sc.nextInt(), sc.nextInt())}")
+        println("Case #$case: ${SolverB().solve(sc)}")
     }
 }
 
-class SolverD {
-    fun solve(userStalls: Int, numberPeople: Int): String {
+class SolverB {
+    fun solve(sc: Scanner): String {
         return ""
     }
 }

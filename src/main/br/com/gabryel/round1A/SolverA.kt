@@ -1,8 +1,5 @@
-package round1A
+package br.com.gabryel.round1A
 
-/**
- * Created by gabryel on 14/04/17.
- */
 import java.util.*
 
 /**
