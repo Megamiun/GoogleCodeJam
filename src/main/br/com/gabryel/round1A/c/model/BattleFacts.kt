@@ -4,20 +4,20 @@ import br.com.gabryel.round1A.c.turnsToKill
 
 class BattleFacts(val initDragon: RPGChar, val initKnight: RPGChar, val buff: Int, val debuff: Int) {
 
-    val buffsNeeded = discoverBuffsNeeded(initDragon)
+    val buffsNeeded = initDragon.discoverBuffsNeeded()
 
-    val attacksNeeded = turnsToKill(initDragon.damage + (buffsNeeded * buff), initKnight.health)
+    val attacksNeeded = initDragon.buff(buffsNeeded * buff).turnsToKill(initKnight)
 
     /**
      * @return Number of buffs needed to optimize the process of killing the knight,
      * that is when the buff doesn't make you save at least one attack against the knight
      */
-    private fun discoverBuffsNeeded(dragon: RPGChar): Int {
-        val buffedDragon = dragon.buff(buff)
-        if (dragon.turnsToKill(initKnight) < 1 + buffedDragon.turnsToKill(initKnight)) {
-            return 0
+    private tailrec fun RPGChar.discoverBuffsNeeded(buffs: Int = 0): Int {
+        val buffedDragon = buff(buff)
+        if (turnsToKill(initKnight) == buffedDragon.turnsToKill(initKnight)) {
+            return buffs
         }
 
-        return discoverBuffsNeeded(buffedDragon) + 1
+        return buffedDragon.discoverBuffsNeeded(1 + buffs)
     }
 }

@@ -1,9 +1,6 @@
 package br.com.gabryel.round1A.c
 
-import br.com.gabryel.round1A.c.model.BattleFacts
-import br.com.gabryel.round1A.c.model.RPGChar
-import br.com.gabryel.round1A.c.model.Result
-import br.com.gabryel.round1A.c.model.Turn
+import br.com.gabryel.round1A.c.model.*
 import java.util.*
 
 fun main(args: Array<String>) {
@@ -29,7 +26,6 @@ fun solve(sc: Scanner): Result {
     }
 }
 
-
 /**
  * Buff the needed number of times and then attack the needed number of times,
  * using the BattleFacts calculations as basis.
@@ -37,23 +33,27 @@ fun solve(sc: Scanner): Result {
  */
 private fun Turn.buffAndAttack(): Turn? {
     return try {
-        this.buff(facts.buffsNeeded).attack(facts.attacksNeeded)
+        act(Action.BUFF, facts.buffsNeeded).act(Action.ATTACK, facts.attacksNeeded)
     } catch (e: ImpossibleException) {
         null
     }
 }
 
 /**
+ * Tries to find all debuffs threshold, that are values of the knight attack power that
+ * add at least one more attack for the knight to completely deplete the dragons life.
+ * Uses tail call recursion to avoid StackOverflows, using CPS for that:
+ * https://stackoverflow.com/questions/47255833/tail-rec-kotlin-list?noredirect=1#comment81463221_47255833
  * @return All possible debuffed States
  */
-private fun Turn.debuffPhase(): List<Turn> {
-    val turns = listOf(this)
+private tailrec fun Turn.debuffPhase(acc: List<Turn> = emptyList()): List<Turn> {
+    val turns = acc + this
     if (facts.debuff == 0 || knight.damage == 0) {
         return turns
     }
 
     // Recursively find all possible thresholds of debuffing
-    return turns.plus(debuff(debuffsForNextThreshold()).debuffPhase())
+    return act(Action.DEBUFF, debuffsForNextThreshold()).debuffPhase(turns)
 }
 
 /**

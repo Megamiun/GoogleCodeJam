@@ -9,5 +9,9 @@ data class RPGChar(val health: Int, val damage: Int) {
 
     fun debuff(debuff: Int) = RPGChar(health, maxOf(0, damage - debuff))
 
+    fun beDamaged(damageTook: Int) = RPGChar(health - damageTook, damage)
+
     fun turnsToKill(defender: RPGChar) = turnsToKill(damage, defender.health)
+
+    fun canKill(defender: RPGChar) = defender.health <= damage
 }
