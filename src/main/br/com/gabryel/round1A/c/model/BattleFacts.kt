@@ -1,12 +1,12 @@
 package br.com.gabryel.round1A.c.model
 
-import br.com.gabryel.round1A.c.turnsToKill
-
-class BattleFacts(val initDragon: RPGChar, val initKnight: RPGChar, val buff: Int, val debuff: Int) {
+class BattleFacts(val initDragon: RPGChar, val initKnight: RPGChar, val buff: Int = 0, val debuff: Int = 0) {
 
     val buffsNeeded = initDragon.discoverBuffsNeeded()
 
     val attacksNeeded = initDragon.buff(buffsNeeded * buff).turnsToKill(initKnight)
+
+    val buffsAndAttacks = attacksNeeded + buffsNeeded
 
     /**
      * @return Number of buffs needed to optimize the process of killing the knight,

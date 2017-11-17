@@ -13,13 +13,13 @@ import java.util.stream.Stream
 
 class Solver1ACTest {
     @ParameterizedTest(name = "testGoogleInput {index}")
-    @ArgumentsSource(value = Provider::class)
+    @ArgumentsSource(value = GoogleProvider::class)
     fun testGoogleInput(input: String, output: String) {
         assertThat(solve(Scanner(input)).toString(), equalTo(output))
     }
 }
 
-private object Provider: ArgumentsProvider {
+private object GoogleProvider: ArgumentsProvider {
     override fun provideArguments(context: ExtensionContext?): Stream<Arguments> = Stream.of(
             Arguments.of("11 5 16 5 0 0", "5"),
             Arguments.of("3 1 3 2 2 0", "2"),

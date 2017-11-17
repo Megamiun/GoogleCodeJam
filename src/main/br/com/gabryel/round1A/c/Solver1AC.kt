@@ -15,28 +15,22 @@ fun solve(sc: Scanner): Result {
     val facts = BattleFacts(RPGChar(sc.nextInt(), sc.nextInt()), RPGChar(sc.nextInt(), sc.nextInt()),
             sc.nextInt(), sc.nextInt())
 
-    return try {
-        Turn(facts)
-                .debuffPhase()
-                .mapNotNull { it.buffAndAttack() }
-                .minBy(Turn::turns)
-                ?.turns.getResult()
-    } catch (e: ImpossibleException) {
-        Result.Impossible
-    }
+    return Turn(facts)
+            .debuffPhase()
+            .mapNotNull { deriveFinalTurnNumber(it) }
+            .min()
+            .asResult()
 }
 
 /**
- * Buff the needed number of times and then attack the needed number of times,
- * using the BattleFacts calculations as basis.
- * @return Turn that the knight dies. Null in impossible cases.
+ * Calculates the number of the final turn
+ *
+ * @param turn Base turn to only buff and attack
+ * @return Number of the final turn, null if impossible to win
  */
-private fun Turn.buffAndAttack(): Turn? {
-    return try {
-        act(Action.BUFF, facts.buffsNeeded).act(Action.ATTACK, facts.attacksNeeded)
-    } catch (e: ImpossibleException) {
-        null
-    }
+private fun deriveFinalTurnNumber(turn: Turn): Int? {
+    val curesNeeded = getNumberOfCures(turn)?: return null
+    return turn.turns + turn.facts.buffsAndAttacks + curesNeeded
 }
 
 /**
@@ -46,14 +40,16 @@ private fun Turn.buffAndAttack(): Turn? {
  * https://stackoverflow.com/questions/47255833/tail-rec-kotlin-list?noredirect=1#comment81463221_47255833
  * @return All possible debuffed States
  */
-private tailrec fun Turn.debuffPhase(acc: List<Turn> = emptyList()): List<Turn> {
+private tailrec fun Turn?.debuffPhase(acc: List<Turn> = emptyList()): List<Turn> {
+    this?: return acc
+
     val turns = acc + this
     if (facts.debuff == 0 || knight.damage == 0) {
         return turns
     }
 
     // Recursively find all possible thresholds of debuffing
-    return act(Action.DEBUFF, debuffsForNextThreshold()).debuffPhase(turns)
+    return Debuff.debuff(this, debuffsForNextThreshold()).debuffPhase(turns)
 }
 
 /**
@@ -67,4 +63,4 @@ private fun Turn.debuffsForNextThreshold(): Int {
     return Math.ceil((knight.damage - nextThreshold) / facts.debuff).toInt()
 }
 
-private fun Int?.getResult() = if (this != null) Result.Sucess(this) else Result.Impossible
+private fun Int?.asResult() = if (this != null) Result.Sucess(this) else Result.Failure

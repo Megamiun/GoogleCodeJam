@@ -5,7 +5,7 @@ sealed class Result {
         override fun toString() = turns.toString()
     }
 
-    object Impossible: Result() {
+    object Failure: Result() {
         override fun toString() = "IMPOSSIBLE"
     }
 }
